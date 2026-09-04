@@ -1,0 +1,41 @@
+# Aider project config — copy to `.aider.conf.yml` at the repo root
+# (or `~/.aider.conf.yml` for a global default).
+# Full key reference: https://aider.chat/docs/config/aider_conf.html
+#
+# CLI flags > env vars (AIDER_*) > .env > this file, in that priority order.
+
+########################
+# Non-interactive defaults (needed for scripted/agent-driven runs):
+########################
+yes-always: true
+check-update: false
+show-release-notes: false
+
+########################
+# Model — pick ONE of the following:
+########################
+
+## Reuse Hermes' existing OPENROUTER_API_KEY (already in the repo's .env);
+## no extra credential needed.
+#model: openrouter/anthropic/claude-sonnet-4.6
+
+## Fully free/local via Ollama. Requires:
+##   ollama pull qwen2.5-coder
+##   export OLLAMA_API_BASE=http://127.0.0.1:11434
+#model: ollama_chat/qwen2.5-coder
+
+########################
+# Fixing and committing:
+########################
+auto-lint: true
+#lint-cmd: "python: ruff check --fix"
+
+## Self-healing loop — Aider re-edits and re-commits until this exits 0.
+#test-cmd: "pytest -q"
+#auto-test: true
+
+########################
+# Git behavior:
+########################
+auto-commits: true
+#aiderignore: .aiderignore
